@@ -22,7 +22,7 @@ $(document).ready(function(){//当整个游戏加载完成后运行的主函数
 
 function prepareForMobile(){
 
-    if(documentWidth>1000){
+    if(documentWidth>820){
         gridContainerWidth=1000;
         cellSpace=40;
         cellSideLength=200;
