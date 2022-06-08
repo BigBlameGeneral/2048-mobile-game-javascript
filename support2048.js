@@ -6,9 +6,21 @@ cellSpace=0.04*documentWidth;
 
 
 function getPosTop(i,j){
+    if(documentWidth>830){
+        gridContainerWidth=1000;
+        cellSpace=40;
+        cellSideLength=200;
+        
+    }
     return cellSpace+i*(cellSideLength+cellSpace);
 }
 function getPosLeft(i,j){
+    if(documentWidth>830){
+        gridContainerWidth=1000;
+        cellSpace=40;
+        cellSideLength=200;
+        
+    }
     return cellSpace+j*(cellSideLength+cellSpace);
 }
 

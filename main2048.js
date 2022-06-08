@@ -35,7 +35,8 @@ function prepareForMobile(){
 
     $('.grid-cell').css('width',cellSideLength);
     $('.grid-cell').css('height',cellSideLength);
-    $('.grid-cell').css('border-radius',0.02*cellSideLength);   $('#grid-container').css('border-radius',0.02*gridContainerWidth);
+    $('.grid-cell').css('border-radius',0.02*cellSideLength);   
+    $('#grid-container').css('border-radius',0.02*gridContainerWidth);
     $('h1').css('font-size',documentWidth*0.1);
     $('p').css('font-size',documentWidth*0.05);
 
@@ -158,8 +159,6 @@ function generateOneNumber(){
 
 $(document).keydown(function(event){//基于玩家响应的游戏
     //console.log(event.keyCode);
-
-    
     switch(event.keyCode){
         case 37://left
             if(moveLeft()){
@@ -209,6 +208,11 @@ document.addEventListener('touchend',function(event){
 
      var deltax=endx-startx;
      var deltay=endy-starty;
+     console.log('手指移动的x值');
+    console.log(deltax);
+    console.log('手指移动的x值');
+    console.log(deltay)
+    
     //防止游戏中不小心点击产生移动
     if(Math.abs(deltax)<30&&Math.abs(deltay)<30){
         return;
@@ -276,13 +280,14 @@ function moveLeft(){
                     continue;
                 }else if(board[i][j]!=0&&board[i][k]==board[i][j]&&noBlockHorizontal(i,k,j,board)&&!hasConflicted[i][k]){
                     showMoveAnimation(i,j,i,k);
+                    console.log('合并前 board['+i+']'+'['+k+']:'+board[i][k]+'    board['+i+']'+'['+j+']:'+board[i][j]);
                     board[i][k]+=board[i][j];
                     board[i][j]=0;
-                    
+                    console.log('合并后 board['+i+']'+'['+k+']:'+board[i][k]);
                     score+=board[i][k]; 
                     updateScore(score);
 
-                    hasConflicted[i][k]=true;
+                    hasConflicted[i][k]=true;//防止一次性合并多块
                 }
             }
         }
